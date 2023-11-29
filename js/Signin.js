@@ -48,7 +48,7 @@ $('#Login').submit(function (e) {
 $('#google').click(function(){
   var provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth()
-  .signInWithPopup(auth, provider)
+  .signInWithPopup(provider)
   .then((result) => {
     /** @type {firebase.auth.OAuthCredential} */
     var credential = result.credential;
