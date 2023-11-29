@@ -1,12 +1,12 @@
 const firebaseConfig = {
-  apiKey: "AIzaSyDZIAVnBvB-GHlaDDO2GbOFjQhVvleb344",
-  authDomain: "database2023test.firebaseapp.com",
-  projectId: "database2023test",
-  storageBucket: "database2023test.appspot.com",
-  messagingSenderId: "352598568614",
-  appId: "1:352598568614:web:b1acd2e65514f8050f8e67",
-  measurementId: "G-6EF9ZJX352"
-}; 
+  apiKey: "AIzaSyDdfGuq6zXIFeYAszrE-0KIZpT4ZFlzlxM",
+  authDomain: "database2023-d2872.firebaseapp.com",
+  projectId: "database2023-d2872",
+  storageBucket: "database2023-d2872.appspot.com",
+  messagingSenderId: "423220712630",
+  appId: "1:423220712630:web:a80c8856fed15f5e66c217",
+  measurementId: "G-10QVJZCYVV"
+};
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
@@ -45,3 +45,26 @@ $('#Login').submit(function (e) {
 });
 
 // add  a google login choice here 
+$('#googleSignIn').click(function(){
+  var provider = new firebase.auth.GoogleAuthProvider();
+  firebase.auth()
+  .signInWithPopup(auth, provider)
+  .then((result) => {
+    // This gives you a Google Access Token. You can use it to access the Google API.
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+    // The signed-in user info.
+    const user = result.user;
+    // IdP data available using getAdditionalUserInfo(result)
+    // ...
+  }).catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // The email of the user's account used.
+    const email = error.customData.email;
+    // The AuthCredential type that was used.
+    const credential = GoogleAuthProvider.credentialFromError(error);
+    // ...
+  });
+});
